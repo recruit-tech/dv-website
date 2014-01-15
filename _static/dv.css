@@ -16,6 +16,7 @@
 
 body {
   font-family: "Verdana", Arial, sans-serif;
+  font-size: 1.0em;
   line-height: 1.4em;
   color: black;
   background-color: #eeeeec;
@@ -24,27 +25,48 @@ body {
 
 /* Page layout */
 
-div.header, div.content, div.footer {
+div.header, div.content, div.footer, div.header-nav {
   width: 50em;
   margin-left: auto;
   margin-right: auto;
 }
 
 div.header-wrapper {
-  border-bottom: 5px solid darkolivegreen;
   background-color: darkolivegreen;
 }
 
+div.header-nav-wrapper {
+  background-color: black;
+}
+
+div.header-wrapper nav {
+    background-color: black;
+    text-align: left;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    font-weight: normal;
+}
+
+div.header-wrapper .nav li {
+    display: inline;
+    text-transform: uppercase;
+    font-size: 150%;
+}
+
+div.header-wrapper .nav li a {
+    margin: 0 3px;
+}
+
 img.forkme {
-  position: absolute;
-  top: 0;
-  right: 0;
-  border: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: 0;
 }
 
 /* Default body styles */
 a {
-  color: green;
+  color: olive;
 }
 
 div.bodywrapper a, div.footer a {
@@ -145,11 +167,22 @@ div.header .headertitle {
   letter-spacing: .02em;
   margin-bottom: 0.5em;
   margin-top: 0.5em;
-}
-
-div.header .headertitle a {
   color: white;
 }
+
+
+div.header .headersubtitle {
+  font-family: "Didot", "Times New Roman", serif;
+  font-weight: normal;
+  font-size: 150%;
+  letter-spacing: .02em;
+  margin-bottom: 0.5em;
+  margin-top: 0.5em;
+  color: #c6c6c6;
+}
+
+
+
 
 div.header div.rel {
   margin-top: 1em;
@@ -253,6 +286,21 @@ div.document blockquote {
 
 div.document ol {
   margin: 1.5em;
+}
+
+div.showterm {
+    display: block;
+    height: 290px;
+}
+
+div.showterm iframe {
+    float: left; 
+    -webkit-transform: scale(.90);
+    -ms-transform: scale(.90);
+    -moz-transform: scale(.90);
+    -webkit-transform-origin: 100% 0;
+    -ms-transform-origin: 100% 0;
+    -moz-transform-origin: 100% 0;
 }
 
 
