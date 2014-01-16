@@ -203,6 +203,13 @@ img.logo {
 
 
 /* Content */
+
+div.total-wrapper {
+  position: relative;
+  min-height: 100%;
+  height: 100%;
+}
+
 div.content-wrapper {
   background-color: white;
   padding-top: 20px;
@@ -376,7 +383,8 @@ div.footer-wrapper {
   border-top: 5px solid darkolivegreen;
   padding-top: 10px;
   padding-bottom: 10px;
-  min-height: 80px;
+  min-height: 1em;
+  height: 2em;
 }
 
 div.footer, div.footer a {
