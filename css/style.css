@@ -450,7 +450,7 @@ section.featured {
 }
 
 section.featured h2.slogan {
-	color: #000;
+	color: #fff;
 	font-size: 48px;
 	font-weight: 900;
 }
@@ -479,7 +479,7 @@ section.featured blockquote p.note {
 
 section.featured p{
 	font-size: 17px;
-		color: #000;
+		color: #fff;
 }
   
  /* inner heading */
