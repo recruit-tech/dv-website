@@ -43,7 +43,7 @@ h5 { font-size: 16px; }
 .txt-uppercase { text-transform: uppercase; }
 
 blockquote {
-	font-family: Georgia, serif;
+    font-family: 'Lato', sans-serif;
 }
 
 blockquote.bigquote {
@@ -446,7 +446,7 @@ h1 a.navbar-brand {
 =========================== */
 
 section.featured {
-	padding: 200px 0 60px;
+	padding: 200px 0 50px;
 	background: #c0c5b2;
 	/* background: #70B9B0; */
 	color: #fdfdfd;
@@ -461,7 +461,9 @@ section.featured h2.slogan {
 section.featured blockquote {
 	margin-top: 10px;
 	margin-bottom: 10px;
-	padding: 2px 7px 1px 7px;
+	margin-left: 70px;
+	margin-right: 70px;
+	padding: 2px 10px 1px 20px;
 	border-left: 0.5em solid #242424;
 	background-color: #fff;
 }
@@ -470,7 +472,7 @@ section.featured blockquote p.title {
 	text-align: left;
 	margin: 0px 10px 5px 0px;
 	font-weight: bold;
-	color: #7F0120;
+	color: #A80C00;
 }
 
 section.featured blockquote p.note {
@@ -482,7 +484,7 @@ section.featured blockquote p.note {
 
 section.featured p{
 	font-size: 17px;
-		color: #fff;
+	color: #fff;
 }
   
  /* inner heading */
