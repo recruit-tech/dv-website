@@ -327,18 +327,22 @@ section.section {
 	font-weight: 700;
 }
 
+
 /* ==========================
  --- Parallax ---
 ============================= */
 
 #parallax1{	
-	background-image: url(../img/parallax/img1.jpg);
+	background-color: #c0c5b2;
+	/* background-image: url(../img/parallax/img1.jpg); */
 }
-#parallax2{	
-	background-image: url(../img/parallax/img2.jpg);
+#parallax2{
+	background-color: #c0c5b2;	
+	/* background-image: url(../img/parallax/img2.jpg); */
 }
 #testimonials{	
-	background-image: url(../img/parallax/img3.jpg);
+	background-color: #c0c5b2;
+	/* background-image: url(../img/parallax/img3.jpg); */
 }
 /*===========================
   --- Header & menu ----
@@ -424,7 +428,15 @@ h1 a.navbar-brand {
 	margin-top: -5px !important;
 }
 
-
+/* ===========================
+	section-services
+=========================== */
+#section-services iframe {
+  scrolling: yes;
+  frameborder: "0";
+  height: 20em;
+  width: 50em;
+}
 
 /*===========================
   --- Featured section ----
@@ -432,19 +444,47 @@ h1 a.navbar-brand {
 
 section.featured {
 	padding: 200px 0 60px;
-	background: #70B9B0;
+	background: #c0c5b2;
+	/* background: #70B9B0; */
 	color: #fdfdfd;
 }
 
 section.featured h2.slogan {
-	color: #fff;
+	color: #000;
 	font-size: 48px;
 	font-weight: 900;
+}
+
+section.featured blockquote {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding: 2px 7px 1px 7px;
+	border-left: 0.5em solid #7F0120;
+	background-color: #eeeeec;
+}
+
+section.featured blockquote p.title {
+	text-align: left;
+	margin: 0px 10px 5px 0px;
+	font-weight: bold;
+	color: #7F0120;
+}
+
+section.featured blockquote p.note {
+	text-align: left;
+	font-size: 15px;
+	margin: 0px 10px 5px 0px;
+	color: #000;
+}
+
+section.featured p{
+	font-size: 17px;
+		color: #000;
 }
   
  /* inner heading */
 section.featured.inner {
-	background: #eee;
+	background: #7F0120;
 	padding: 150px 0 50px;
 }
   
