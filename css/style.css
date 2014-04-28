@@ -438,6 +438,9 @@ h1 a.navbar-brand {
   width: 50em;
 }
 
+#section-services h1{
+	color: #7F0120;
+  }
 /*===========================
   --- Featured section ----
 =========================== */
@@ -459,8 +462,8 @@ section.featured blockquote {
 	margin-top: 10px;
 	margin-bottom: 10px;
 	padding: 2px 7px 1px 7px;
-	border-left: 0.5em solid #7F0120;
-	background-color: #eeeeec;
+	border-left: 0.5em solid #242424;
+	background-color: #fff;
 }
 
 section.featured blockquote p.title {
@@ -984,7 +987,7 @@ a.scrollup:hover{
 	background-color:#33ccff;
 }
 .social-network a.icoGoogle:hover {
-	background-color:#BD3518;
+	background-color:#4183C4;
 }
 .social-network a.icoVimeo:hover {
 	background-color:#0590B8;
