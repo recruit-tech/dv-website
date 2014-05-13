@@ -17,8 +17,23 @@ body {
 	text-shadow: none;
 }
 
+img {
+    overflow: scroll;
+    max-width: 100%;
+}
+
+.showterm {
+    padding: 10px; 
+}
+
+.showterm iframe {
+    align: center;
+    max-width: 50%;
+    -webkit-overflow-scrolling: touch;
+}
+
 .clear {
-	clear: both;
+    clear: both;
 }
 
 body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
@@ -405,6 +420,7 @@ h1 a.navbar-brand {
 	color: #fff;
 	font-weight: 900;
 	text-shadow: none;
+	float: left; 
 }
 
 .navbar-brand {
@@ -414,8 +430,11 @@ h1 a.navbar-brand {
 	line-height: 90px;
 }
 
-.navbar-brand img {
-	vertical-align: middle;
+.company-brand {
+	font-size: 24px;
+	color: #fff;
+	font-weight: 900;
+	text-shadow: none;
 }
 
 .navbar-toggle {

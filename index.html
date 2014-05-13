@@ -21,17 +21,19 @@
   
   <body>
     <section id="header" class="appear"></section>
-    <div class="navbar navbar-fixed-top" role="navigation" data-0="line-height:100px; height:100px; background-color:rgba(0,0,0,0.3);" data-300="line-height:60px; height:60px; background-color:rgba(0,0,0,1);">
+    <div class="navbar navbar-fixed-top" role="navigation" data-0="line-height:100px; height:100px; background-color:rgba(0,0,0,0.3);" data-300="line-height:100px; height:100px; background-color:rgba(0,0,0,1);">
       <div class="container">
 	<div class="navbar-header">
 	  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
 	    <span class="fa fa-bars color-white"></span>
 	  </button>
-	  <h1><a class="navbar-brand" href="index.html" data-0="line-height:90px;" data-300="line-height:50px;"><img src="img/logo/logo.png" alt="" /></a></h1>
-	  <img src="img/logo/recruit.png" alt="" />
+	  <div align="left"  style="width:100px;">
+	    <p><a class="navbar-brand" href="index.html" style="line-height:50px;"><img src="img/logo/logo.png" alt=""/></a></p>
+	    <p><a class="navbar-brand" href="index.html" style="line-height:50px;"><img src="img/logo/recruit.png"/></a></p>
+	  </div>
 	</div>
 	<div class="navbar-collapse collapse">
-	  <ul class="nav navbar-nav" data-0="margin-top:20px;" data-300="margin-top:5px;">
+	  <ul class="nav navbar-nav" style="margin-top:20px;">
 	    <li class="active"><a href="index.html">Home</a></li>
 	    <li><a href="https://github.com/recruit-tech/redpen/">Source</a></li>
 	    <li><a href="https://github.com/recruit-tech/redpen/issues?state=open">Issues</a></li>
@@ -46,9 +48,8 @@
       <div class="container"> 
 	<div class="row mar-bot40">
 	  <div class="col-md-6 col-md-offset-3">
-	    
 	    <div class="align-center">
-	      <img src="img/logo/logo-001.png" alt="" />
+	      <img src="img/logo/logo-001.png"/>
 	      <h2 class="slogan">What is RedPen?</h2>
 	      <p>
 		RedPen is a tool to help writers or programmers who write technical documents or manuals that need to adhere to a writing standard. RedPen automates the verifications of input documents written in natural languages (<strong>NOT</strong> computer languages such as C++ or Java).
@@ -77,8 +78,10 @@
 	      <!-- <h4>Lorem ipsum dolor sit amet, mutat graeco volumus ad eam, singulis patrioque comprehensam nam no.  -->
 	      <!-- Mei cu dicat voluptaria volumus.</h4> -->
 	      <br>
-	      <iframe src="http://showterm.io/514b24cbca582467d42ca"></iframe>	
 	      <br>
+	      <div class="showterm" style="width: 100%; height: 100%; overflow: auto; -webkit-overflow-scrolling: touch;">
+		<iframe src="http://showterm.io/514b24cbca582467d42ca"></iframe>
+	      </div>
 	      <br>
 	      <h2><a class="btn-theme btn-lg" data-filter="*" href="http://redpen.bigram.org/docs/index.html">Go to RedPen's manual</a></h2>
 	    </div>
