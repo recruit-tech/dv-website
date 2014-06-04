@@ -950,6 +950,10 @@ section#footer .copyright {
 	text-align: center;
 }
 
+section#footer .h1, h2, h3, h4, h5, h6 {
+	color:white;
+}
+
 /* footer social icons */
 ul.social-network {
 	list-style: none;
