@@ -333,6 +333,18 @@ section.section {
 	background-color: #fff;
 }
 
+.bg-white  h2 {
+    color: black;
+}
+
+.bg-gray {
+	background-color: #BEBEBE;
+}
+
+.bg-gray  h2 {
+    color: black;
+}
+
 /* --- section heading --- */
 .section-header {
 	text-align: center;
