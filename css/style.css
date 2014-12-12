@@ -506,6 +506,11 @@ section.featured blockquote p.title {
 	color: #A80C00;
 }
 
+section.featured blockquote a {
+	font-weight: bold;
+	color: #000;
+}
+
 section.featured blockquote p.note {
 	text-align: left;
 	font-size: 15px;
