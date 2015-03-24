@@ -1,206 +1,427 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-  <head>
-    <!-- BASICS -->
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>RedPen: a document checker</title>
-    <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="css/isotope.css" media="screen" />	
-    <link rel="stylesheet" href="js/fancybox/jquery.fancybox.css" type="text/css" media="screen" />
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/bootstrap-theme.css">
-    <link rel="stylesheet" href="css/style.css">
-    <!-- skin -->
-    <link rel="stylesheet" href="skin/default.css">
-  </head>
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-<script>
-  (function (i, s, o, g, r, a, m) {
-  i['GoogleAnalyticsObject'] = r;
-  i[r] = i[r] || function () {
-  (i[r].q = i[r].q || []).push(arguments)
-  }, i[r].l = 1 * new Date();
-  a = s.createElement(o),
-  m = s.getElementsByTagName(o)[0];
-  a.async = 1;
-  a.src = g;
-  m.parentNode.insertBefore(a, m)
-  })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+    <title>RedPen</title>
 
-  ga('create', 'UA-35176364-2', 'auto');
-  ga('send', 'pageview');
-</script>
-<a href="#header" class="scrollup"><i class="fa fa-chevron-up"></i></a>	
+    <link href="./css/bootstrap.min.css" rel="stylesheet" type="text/css">
 
-<script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
-<script src="js/jquery.js"></script>
-<script src="js/jquery.easing.1.3.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASm3CwaK9qtcZEWYa-iQwHaGi3gcosAJc&sensor=false"></script>
-<script src="js/jquery.isotope.min.js"></script>
-<script src="js/jquery.nicescroll.min.js"></script>
-<script src="js/fancybox/jquery.fancybox.pack.js"></script>
-<script src="js/skrollr.min.js"></script>		
-<script src="js/jquery.scrollTo-1.4.3.1-min.js"></script>
-<script src="js/jquery.localscroll-1.2.7-min.js"></script>
-<script src="js/stellar.js"></script>
-<script src="js/jquery.appear.js"></script>
-<script src="js/validate.js"></script>
-<script src="js/main.js"></script>
-<script type="text/javascript">
-  // When the window has finished loading create our google map below
-  google.maps.event.addDomListener(window, 'load', init);
-  
-  function init() {
-  // Basic options for a simple Google Map
-  // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
-  var mapOptions = {
-  // How zoomed in you want the map to start at (always required)
-  zoom: 11,
+    <link href="./css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="./css/animate.css" rel="stylesheet">
 
-  // The latitude and longitude to center the map (always required)
-  center: new google.maps.LatLng(40.6700, -73.9400), // New York
+    <link href="./css/style.css" rel="stylesheet">
+    <link href="./css/default.css" rel="stylesheet">
+    <link href="./css/redpen.css" rel="stylesheet">
+    <script src="./js/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                        m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
-  // How you would like to style the map. 
-  // This is where you would paste any style found on Snazzy Maps.
-  styles: [	{		featureType:"all",		elementType:"all",		stylers:[		{			invert_lightness:true		},		{			saturation:10		},		{			lightness:30		},		{			gamma:0.5		},		{			hue:"#1C705B"		}		]	}	]
-  };
+            ga('create', 'UA-35176364-2', 'bigram.org');
+            ga('send', 'pageview');
 
-  // Get the HTML DOM element that will contain your map 
-  // We are using a div with id="map" seen below in the <body>
-    var mapElement = document.getElementById('map');
+            var setLanguage = function (lang) {
+                lang = lang.substr(0, 2);
+                var from = lang == 'en' ? 'ja' : 'en';
+                $('.lang-' + from).hide();
+                $('.lang-' + lang).fadeIn();
+                $('.redpen-lang')
+                        .removeClass("active")
+                        .each(function (i, el) {
+                            if ($(el).data("lang") == lang) {
+                                $(el).addClass("active");
+                            }
+                        });
+            };
 
-    // Create the Google Map using out element and options defined above
-    var map = new google.maps.Map(mapElement, mapOptions);
-    }
-</script>
-  
-  <body>
-    <section id="header" class="appear"></section>
-    <div class="navbar navbar-fixed-top" role="navigation" data-0="line-height:100px; height:100px; background-color:rgba(0,0,0,0.3);" data-300="line-height:100px; height:100px; background-color:rgba(0,0,0,1);">
-      <div class="container">
-	<div class="navbar-header">
-	  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-	    <span class="fa fa-bars color-white"></span>
-	  </button>
-	  <div align="left"  style="width:100px;">
-	    <p><a class="navbar-brand" href="index.html" style="line-height:50px;"><img src="img/logo/logo.png" alt=""/></a></p>
-	    <p><a class="navbar-brand" href="index.html" style="line-height:50px;"><img src="img/logo/recruit.png"/></a></p>
-	  </div>
-	</div>
-	<div class="navbar-collapse collapse">
-	  <ul class="nav navbar-nav" style="margin-top:20px;">
-	    <li class="active"><a href="index.html">Home</a></li>
-	    <li><a href="http://blog.redpen.cc/">Blog</a></li>
-	    <li><a href="http://redpen.herokuapp.com/">Server</a></li>
-	    <li><a href="docs.html">DOC</a></li>
-	    <li><a href="https://github.com/recruit-tech/redpen/"><i class="fa fa-github fa-15x"></i></a></li>
-	    <li><a href="https://twitter.com/intent/tweet?button_hashtag=redpen-cc&text=RedPen%2C%20a%20document%20checker"><i class="fa fa-twitter-square fa-15x"></i></a></li>
-	  </ul>
-	</div><!--/.navbar-collapse -->
-      </div>
+            $(".redpen-lang").click(function () {
+                setLanguage($(this).data("lang"));
+            });
+
+            setLanguage(navigator.language || navigator.userLanguage || "en");
+        });
+    </script>
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-custom">
+<!-- Preloader -->
+<div id="preloader" style="display: none;">
+    <div id="load" style="display: none;"></div>
+</div>
+
+<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                <i class="fa fa-bars"></i>
+            </button>
+            <a class="navbar-brand" href="./index.html">
+                <h1 class="redpen-recruit-logo"><span class="redpen-red">Red</span>Pen</h1>
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="index.html">Home</a></li>
+                <li><a href="http://blog.redpen.cc/">Blog</a></li>
+                <li><a href="http://redpen.herokuapp.com/">Server</a></li>
+                <li><a href="https://github.com/recruit-tech/redpen/">Source</a></li>
+                <li><a href="https://github.com/recruit-tech/redpen/issues?state=open">Issues</a></li>
+                <li><a href="docs.html">DOC</a></li>
+                <li class="redpen-lang-selector">
+                    <a class="redpen-lang" data-lang="en">English</a>
+                </li>
+                <li class="redpen-lang-selector">
+                    <a class="redpen-lang" data-lang="ja">日本語</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
     </div>
+    <!-- /.container -->
+</nav>
 
-    <section class="featured">
-      <div class="container"> 
-	<div class="row mar-bot40">
-	  <div class="col-md-6 col-md-offset-3">
-	    <div class="align-center">
-	      <img src="img/logo/logo-001.png"/>
-	      <h2 class="slogan">What is RedPen?</h2>
-	      <p>
-		RedPen is a proofreading tool to help writers or programmers who write technical documents or manuals that need to adhere to a writing standard. RedPen automates the verifications of input documents written in natural languages (<strong>NOT</strong> computer languages such as C++ or Java).
-	      </p>
-	      <br>
-	    </div>
-	  </div>
-	</div>
-      </div>
-    </section>
-    
-    <!-- services -->
-    <section id="section-services" class="section pad-bot30 bg-gray">
-      <div class="container"> 
-	<div class="row mar-bot40">
-	  <div class="col-sm-12" >
-	    <div class="align-center">
-	      <h2 class="text-bold">Short Introduction</h2>
-	      <br/>
-	      <br/>
-	      <iframe src="//www.slideshare.net/slideshow/embed_code/38475202" width="427" height="356" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 50%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="https://www.slideshare.net/recruitcojp/redpen-a-document-checker" title="Redpen, a document checker" target="_blank">Redpen, a document checker</a> </strong> from <strong><a href="http://www.slideshare.net/recruitcojp" target="_blank">Recruit Technologies</a></strong> </div>
-	      <br/>
-	      <br/>
-	      <h2 class="text-bold">How to use it?</h2>
-	      <!-- <h4>Lorem ipsum dolor sit amet, mutat graeco volumus ad eam, singulis patrioque comprehensam nam no.  -->
-	      <!-- Mei cu dicat voluptaria volumus.</h4> -->
-	      <br/>
-	      <br/>
-	      <div class="showterm" style="width: 100%; height: 330px; overflow: auto; -webkit-overflow-scrolling: touch;">
-		<iframe style="width: 100%; height: 100%;" src="http://showterm.io/433bdf98e35e34edbb60a"></iframe>
-	      </div>
-	      <br/>
-	      <h2><a class="btn-theme btn-lg" data-filter="*" href="http://redpen.cc/docs/latest/index.html">Go to RedPen's manual</a></h2>
-	    </div>	
-	  </div>
-	</div>	
+<!-- Section: intro -->
+<section id="intro" class="intro">
+    <div class="slogan">
+        <img class="wow bounceInDown animated" data-wow-delay="0.0s" src="./img/logo/logo-002.png"/>
 
-      </div>
+        <h2 class="lang-en">What is RedPen?</h2>
 
-    </section>
-    
+        <h2 class="lang-ja">RedPen?</h2>
 
-    <section id="footer" class="section">
-      <div class="container"> 
-	<div class="row mar-bot40">
-	  
-	  <div class="col-lg-4" >
-	    <div class="align-center">
-	      <i class="fa fa-star fa-5x mar-bot20"></i>
-	      <h4 class="text-bold">Customizable</h4>
-	      <p>RedPen is highly customizble. Select provided validators and add them into the configuration file.</p>
-	    </div>
-	  </div>
-	  
-	  <div class="col-lg-4" >
-	    <div class="align-center">
-	      <i class="fa fa-bolt fa-5x mar-bot20"></i>
-	      <h4 class="text-bold">Language Independent</h4>
-	      <p>RedPen works with any documents with any languages (English, German, Japanese, Chinese...). </p>
-	    </div>
-	  </div>
-
-	  <div class="col-lg-4" >
-	    <div class="align-center">
-	      <i class="fa fa-clipboard fa-5x mar-bot20"></i>
-	      <h4 class="text-bold">Resources</h4>
-      	      <iframe src="http://ghbtns.com/github-btn.html?user=recruit-tech&repo=redpen&type=fork" allowtransparency="true" frameborder="0" scrolling="0" width="53px" height="20px"></iframe>&nbsp;<iframe src="http://ghbtns.com/github-btn.html?user=recruit-tech&repo=redpen&type=watch&count=true"
-																									       allowtransparency="true" frameborder="0" scrolling="0" width="80px" height="20px">
-      	      </iframe>
-      	      <br>
-      	      <a href="https://twitter.com/redpen_news" class="twitter-follow-button" data-show-count="false">Follow @redpen_news</a>
-      	      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-      	      <br>
-	      <a href="index.html"><img src="img/us.png" alt="English" width="30px" height="15px"></a>
-	      <a href="index_ja.html"><img src="img/ja.png" alt="Japanese"  width="30px" height="15px"></a>
-      	      <br>
-	      <ul class="footer-menu">
-		<li><a href="https://groups.google.com/forum/#!forum/redpen-validator">Mailing List</a></li>
-	      </ul>
-	    </div>
-	  </div>
-
-	</div>
-      </div>
-
-      <div class="row align-center copyright">
-	<div class="col-sm-12"><p>Copyright &copy; 2013, Recruit Technologies Co., Ltd.</p></div>
-      </div>
-    </section>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <div class="wow bounceInDown animated" data-wow-delay="0.4s"
+                         style="visibility: visible;-webkit-animation-delay: 0.4s; -moz-animation-delay: 0.4s; animation-delay: 0.4s;">
+                        <h4 class="lang-en">
+                            RedPen is a proofreading tool to help writers or programmers who write technical documents
+                            or
+                            manuals that need to adhere to a writing standard.<br/><br/>
+                            RedPen automates the verifications of input
+                            documents written in natural languages &mdash; <i>NOT</i> computer languages such as C++ or
+                            Java.</h4>
+                        <h4 class="lang-ja">
+                            RedPen はプログラマや記者が規約にしたがって文書 (マニュアルやソフトウェアドキュメント) を記述するのをサポートします。<br/><br/>RedPen
+                            は自然言語で記述された入力文書のチェックを自動化します。</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-scroll">
+        <a href="#service" class="btn btn-circle">
+            <i class="fa fa-angle-double-down animated"></i>
+        </a>
+    </div>
 </section>
+<!-- /Section: intro -->
+
+<!-- Section: about -->
+<section id="about" class="home-section text-center">
+    <div class="heading-about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <div class="wow bounceInDown animated" data-wow-delay="0.4s"
+                         style="visibility: visible;-webkit-animation-delay: 0.4s; -moz-animation-delay: 0.4s; animation-delay: 0.4s;">
+                        <div class="section-heading">
+                            <h2 class="text-bold lang-ja">RedPen の概要</h2>
+
+                            <h2 class="text-bold lang-en">Introduction</h2>
+                            <i class="fa fa-2x fa-angle-down"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-2 col-lg-offset-5">
+                <hr class="marginbot-50">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <div class="wow bounceInUp animated" data-wow-delay="0.2s"
+                     style="visibility: visible;-webkit-animation-delay: 0.2s; -moz-animation-delay: 0.2s; animation-delay: 0.2s;">
+                    <div class="team boxed-grey">
+                        <div class="inner">
+                            <h5 class="lang-en">Customizable</h5>
+                            <h5 class="lang-ja">柔軟な設定</h5>
+
+                            <p class="subtitle lang-en">RedPen is highly customizable. Choose provided validators and
+                                add them to your
+                                configuration file.</p>
+
+                            <p class="subtitle lang-ja">RedPen は設定が柔軟に行えます。RedPen の設定は必要な Validator
+                                と利用する文字セットを設定ファイルに記述します。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <div class="wow bounceInUp animated" data-wow-delay="0.5s"
+                     style="visibility: visible;-webkit-animation-delay: 0.5s; -moz-animation-delay: 0.5s; animation-delay: 0.5s;">
+                    <div class="team boxed-grey">
+                        <div class="inner">
+                            <h5 class="lang-en">Language Independent</h5>
+                            <h5 class="lang-ja">言語非依存</h5>
+
+                            <p class="subtitle lang-en">RedPen works with any documents with any languages (English,
+                                German, Japanese,
+                                Chinese...). </p>
+
+                            <p class="subtitle lang-ja">RedPen はどのような言語（英語、ドイツ語、中国語、日本語等）で書かれた文書でも処理できます。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /Section: about -->
+
+
+<!-- Section: services -->
+<section id="service" class="home-section text-center bg-gray">
+    <div class="heading-about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <div class="wow bounceInDown animated" data-wow-delay="0.4s"
+                         style="visibility: visible;-webkit-animation-delay: 0.4s; -moz-animation-delay: 0.4s; animation-delay: 0.4s;">
+                        <div class="section-heading">
+
+                            <h2 class="text-bold lang-en">Resources</h2>
+
+                            <h2 class="text-bold lang-ja">リソース</h2>
+
+                            <i class="fa fa-2x fa-angle-down"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-2 col-lg-offset-5">
+                <hr class="marginbot-50">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 col-md-6">
+                <div class="wow fadeInLeft animated" data-wow-delay="0.4s"
+                     style="visibility: visible;-webkit-animation-delay: 0.2s; -moz-animation-delay: 0.2s; animation-delay: 0.2s;">
+                    <div class="service-box">
+                        <div class="service-desc">
+                            <div class="service-box">
+                                <div class="service-desc">
+                                    <h5 class="lang-en">Documentation</h5>
+                                    <h5 class="lang-ja">ドキュメンテーション</h5>
+
+                                    <p class="lang-en"><a class="btn-theme btn-lg" data-filter="*"
+                                                          href="http://redpen.cc/docs/latest/index.html">View the
+                                        RedPen manual</a></p>
+
+                                    <p class="lang-ja"><a class="btn-theme btn-lg" data-filter="*"
+                                                          href="http://redpen.cc/docs/latest/index.html">RedPenマニュアルに移動</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-6">
+                <div class="wow fadeInLeft animated" data-wow-delay="0.4s"
+                     style="visibility: visible;-webkit-animation-delay: 0.2s; -moz-animation-delay: 0.2s; animation-delay: 0.2s;">
+                    <div class="service-box">
+                        <div class="service-desc">
+                            <div class="service-box">
+                                <div class="service-desc">
+                                    <h5 class="lang-en">NEWS</h5>
+                                    <h5 class="lang-ja">ニュース</h5>
+
+                                    <p class="subtitle"><a
+                                            href="http://gihyo.jp/lifestyle/serial/01/redpen">gihyo.jp</a> で
+                                        RedPen
+                                        の使い方について連載が始まりました。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-2 col-lg-offset-5">
+                <br/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 col-md-6">
+                <div class="wow fadeInLeft animated" data-wow-delay="0.2s"
+                     style="visibility: visible;-webkit-animation-delay: 0.2s; -moz-animation-delay: 0.2s; animation-delay: 0.2s;">
+                    <div class="service-box">
+                        <div class="service-desc">
+                            <h5 class="lang-en">Presentation</h5>
+                            <h5 class="lang-ja">プレゼンテーション</h5>
+                            <iframe src="//www.slideshare.net/slideshow/embed_code/37034060" width="427" height="356"
+                                    frameborder="0" marginwidth="0" marginheight="0" scrolling="no"
+                                    style="width: 100%; height: 356px; border: none;"
+                                    allowfullscreen></iframe>
+                            <p>
+                                <a href="https://www.slideshare.net/recruitcojp/redpen-status-201407-37034060"
+                                   title="RedPen Status 2014/07" target="_blank">RedPen Status 2014/07</a>
+                                from
+                                <a href="http://www.slideshare.net/recruitcojp" target="_blank">Recruit
+                                    Technologies</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-6">
+                <div class="wow fadeInUp animated" data-wow-delay="0.3s"
+                     style="visibility: visible;-webkit-animation-delay: 0.2s; -moz-animation-delay: 0.2s; animation-delay: 0.2s;">
+                    <div class="service-box">
+                        <div class="service-desc">
+                            <h5 class="text-bold lang-ja">使い方</h5>
+                            <h5 class="text-bold lang-en">How to use it?</h5>
+
+                            <div class="showterm"
+                                 style="width: 100%; height: 356px; overflow: hidden; -webkit-overflow-scrolling: touch;">
+                                <iframe style="width: 100%; height: 100%; border: none;"
+                                        src="http://showterm.io/433bdf98e35e34edbb60a"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /Section: services -->
+
+
+<!-- Section: contact -->
+<section id="contact" class="home-section text-center">
+    <div class="heading-contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <div class="wow bounceInDown animated" data-wow-delay="0.4s"
+                         style="visibility: visible;-webkit-animation-delay: 0.4s; -moz-animation-delay: 0.4s; animation-delay: 0.4s;">
+                        <div class="section-heading">
+                            <h2 class="lang-en">Get in touch</h2>
+
+                            <h2 class="lang-ja">コンタクト</h2>
+                            <i class="fa fa-2x fa-angle-down"></i>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-2 col-lg-offset-5">
+                <hr class="marginbot-50">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="text-center">
+                    <iframe src="http://ghbtns.com/github-btn.html?user=recruit-tech&repo=redpen&type=fork"
+                            allowtransparency="true" frameborder="0" scrolling="0" width="80px" height="40px"></iframe>
+
+                    <iframe src="http://ghbtns.com/github-btn.html?user=recruit-tech&repo=redpen&type=watch&count=true"
+                            allowtransparency="true" frameborder="0" scrolling="0" width="80px" height="40px">
+                    </iframe>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <p class="text-center">
+                    <a href="https://twitter.com/redpen_news_jp" class="twitter-follow-button"
+                       data-show-count="false">Follow
+                        @redpen_news_jp</a>
+                </p>
+                <script>
+                    !function (d, s, id) {
+                        var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
+                        if (!d.getElementById(id)) {
+                            js = d.createElement(s);
+                            js.id = id;
+                            js.src = p + '://platform.twitter.com/widgets.js';
+                            fjs.parentNode.insertBefore(js, fjs);
+                        }
+                    }(document, 'script', 'twitter-wjs');
+                </script>
+            </div>
+
+            <div class="col-lg-4">
+                <h4 class="text-center">
+                    <a href="https://groups.google.com/forum/#!forum/redpen-validator-ja"><b
+                            class="fa fa-envelope"></b>&nbsp;Mailing List</a>
+                </h4>
+            </div>
+        </div>
+
+    </div>
+</section>
+<!-- /Section: contact -->
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-lg-12">
+                <div class="wow shake animated" data-wow-delay="0.4s"
+                     style="visibility: visible;-webkit-animation-delay: 0.4s; -moz-animation-delay: 0.4s; animation-delay: 0.4s;">
+                    <div class="page-scroll marginbot-30">
+                        <a href="#intro" id="totop"
+                           class="btn btn-circle">
+                            <i class="fa fa-angle-double-up animated"></i>
+                        </a>
+                    </div>
+                </div>
+                <p>Copyright &copy; 2015, Recruit Technologies Co., Ltd.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Core JavaScript Files -->
+<script src="./js/jquery.min.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+<script src="./js/jquery.easing.min.js"></script>
+<script src="./js/jquery.scrollTo.js"></script>
+<script src="./js/wow.min.js"></script>
+<!-- Custom Theme JavaScript -->
+<script src="./js/custom.js"></script>
+
+
 </body>
 </html>
