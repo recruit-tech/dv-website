@@ -10,7 +10,6 @@
     <title>RedPen</title>
 
     <link href="./css/bootstrap.min.css" rel="stylesheet" type="text/css">
-
     <link href="./css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="./css/animate.css" rel="stylesheet">
 
@@ -18,6 +17,18 @@
     <link href="./css/default.css" rel="stylesheet">
     <link href="./css/redpen.css" rel="stylesheet">
     <script src="./js/jquery.min.js"></script>
+
+    <script>
+      !function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
+        if (!d.getElementById(id)) {
+          js = d.createElement(s);
+          js.id = id;
+          js.src = p + '://platform.twitter.com/widgets.js';
+          fjs.parentNode.insertBefore(js, fjs);
+        }
+      }(document, 'script', 'twitter-wjs');
+    </script>
   </head>
 
   <body id="page-top" data-spy="scroll" data-target=".navbar-custom">
@@ -168,7 +179,6 @@
                   <h5 class="lang-ja">マークアップ言語サポート</h5>
 
                   <p class="subtitle lang-en">RedPen validates texts written in markup languages (Markdown, Textile, AsciiDoc, and LaTeX) directly.</p>
-
                   <p class="subtitle lang-ja">RedPen は多様なフォーマット（Markdown、Textile、Re:VIEW、AsciiDoc、LaTeXなど）で記述された文書をそのまま検査できます。</p>
                 </div>
               </div>
@@ -189,11 +199,8 @@
               <div class="wow bounceInDown animated" data-wow-delay="0.4s"
                    style="visibility: visible;-webkit-animation-delay: 0.4s; -moz-animation-delay: 0.4s; animation-delay: 0.4s;">
                 <div class="section-heading">
-
                   <h2 class="text-bold lang-en">Resources</h2>
-
                   <h2 class="text-bold lang-ja">リソース</h2>
-
                   <i class="fa fa-2x fa-angle-down"></i>
                 </div>
               </div>
@@ -373,37 +380,21 @@
 	    <p class="text-center lang-ja">
               <a href="https://twitter.com/redpen_news_jp" class="twitter-follow-button lang-ja" data-show-count="false">フォロー @redpen_news_jp</a>
             </p>
-
-            <script>
-              !function (d, s, id) {
-              var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
-              if (!d.getElementById(id)) {
-              js = d.createElement(s);
-              js.id = id;
-              js.src = p + '://platform.twitter.com/widgets.js';
-              fjs.parentNode.insertBefore(js, fjs);
-              }
-              }(document, 'script', 'twitter-wjs');
-            </script>
           </div>
 
           <div class="col-lg-4">
 	    <h4 class="text-center lang-en">
-              <a href="https://groups.google.com/forum/#!forum/redpen-validator"><b
-										    class="fa fa-envelope"></b>&nbsp;Mailing List</a>
+              <a href="https://groups.google.com/forum/#!forum/redpen-validator"><b class="fa fa-envelope"></b>&nbsp;Mailing List</a>
             </h4>
             <h4 class="text-center lang-en">
-              <a href="https://gitter.im/redpen-cc/redpen"><b
-							      class="fa fa-users"></b>&nbsp;Chat room</a>
+              <a href="https://gitter.im/redpen-cc/redpen"><b class="fa fa-users"></b>&nbsp;Chat room</a>
             </h4>
 
             <h4 class="text-center lang-ja">
-              <a href="https://groups.google.com/forum/#!forum/redpen-validator-ja"><b
-										       class="fa fa-users"></b>&nbsp;メーリングリスト</a>
+              <a href="https://groups.google.com/forum/#!forum/redpen-validator-ja"><b class="fa fa-users"></b>&nbsp;メーリングリスト</a>
             </h4>
             <h4 class="text-center lang-ja">
-              <a href="https://gitter.im/redpen-cc/redpen/redpen-ja"><b
-									class="fa fa-snapchat"></b>&nbsp;サポート用チャット（日本語）</a>
+              <a href="https://gitter.im/redpen-cc/redpen/redpen-ja"><b class="fa fa-snapchat"></b>&nbsp;サポート用チャット（日本語）</a>
             </h4>
           </div>
         </div>
@@ -431,6 +422,7 @@
       </div>
     </footer>
 
+
     <!-- Core JavaScript Files -->
     <script src="./js/jquery.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
@@ -439,7 +431,5 @@
     <script src="./js/wow.min.js"></script>
     <!-- Custom Theme JavaScript -->
     <script src="./js/custom.js"></script>
-
-
   </body>
 </html>
