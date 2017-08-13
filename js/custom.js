@@ -12,13 +12,12 @@ var setLanguage = function (lang) {
 	});
 };
 
-(function ($) {
+$(document).ready(function ($) {
     new WOW().init();
     jQuery(window).load(function() {
 	    jQuery("#preloader").delay(100).fadeOut("slow");
 	    jQuery("#load").delay(100).fadeOut("slow");
 	});
-
 
     //jQuery to collapse the navbar on scroll
     $(window).scroll(function() {
@@ -50,6 +49,5 @@ var setLanguage = function (lang) {
       $(".redpen-lang").click(function () {
 	      setLanguage($(this).data("lang"));
       });
-
       setLanguage(navigator.language || navigator.userLanguage || "en");
-})(jQuery);
+});
