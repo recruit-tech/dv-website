@@ -34,26 +34,6 @@
 
       ga('create', 'UA-35176364-2', 'bigram.org');
       ga('send', 'pageview');
-
-      var setLanguage = function (lang) {
-      lang = lang.substr(0, 2);
-      var from = lang == 'en' ? 'ja' : 'en';
-      $('.lang-' + from).hide();
-      $('.lang-' + lang).fadeIn();
-      $('.redpen-lang')
-      .removeClass("active")
-      .each(function (i, el) {
-      if ($(el).data("lang") == lang) {
-      $(el).addClass("active");
-      }
-      });
-      };
-
-      $(".redpen-lang").click(function () {
-      setLanguage($(this).data("lang"));
-      });
-
-      setLanguage(navigator.language || navigator.userLanguage || "en");
       });
     </script>
   </head>
